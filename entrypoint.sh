@@ -12,7 +12,7 @@ GITHUB_PAGES_WEBSITE_URL="https://${INPUT_GITHUB_REPO_OWNER}.github.io/${REPOSIT
 #clone the gh-pages branch to the allure history folder
 if [[ ${INPUT_GH_PAGES_BRANCH} != '' ]]; then
   echo "cloning gh-pages branch to ${INPUT_GH_PAGES} ..."
-  git clone https://${INPUT_GITHUB_TOKEN}@github.com${INPUT_GITHUB_REPO} --branch $INPUT_GH_PAGES_BRANCH ${INPUT_GH_PAGES}
+  git clone https://${INPUT_GITHUB_TOKEN}@github.com/${INPUT_GITHUB_REPO} --branch $INPUT_GH_PAGES_BRANCH ${INPUT_GH_PAGES}
 fi
 
 
