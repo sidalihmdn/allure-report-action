@@ -64,7 +64,6 @@ runs:
   steps:
     - name: Set Up Environment Variables
       shell: bash
-      working-directory: ${{ github.action_path }}
       env:
         INPUT_ALLURE_RESULTS: '${{ inputs.allure_results }}'
         INPUT_ALLURE_REPORT: '${{ inputs.allure_report }}'
@@ -83,5 +82,5 @@ runs:
         ls -la
         pwd
 
-        chmod +x entrypoint.sh
-        ./entrypoint.sh
+        chmod +x ${{ github.action_path }}/entrypoint.sh
+        .${{ github.action_path }}/entrypoint.sh
