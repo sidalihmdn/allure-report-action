@@ -9,6 +9,13 @@ REPOSITORY_NAME=${REPOSITORY_OWNER_SLASH_NAME##*/}
 GITHUB_PAGES_WEBSITE_URL="https://${INPUT_GITHUB_REPO_OWNER}.github.io/${REPOSITORY_NAME}"
 #echo "Github pages url $GITHUB_PAGES_WEBSITE_URL"
 
+#clone the gh-pages branch to the allure history folder
+if [[ ${INPUT_GH_PAGES_BRANCH} != '' ]]; then
+  echo "cloning gh-pages branch to ${INPUT_GH_PAGES} ..."
+  git clone https://${INPUT_GITHUB_TOKEN}@${INPUT_GITHUB_REPO} --branch $INPUT_GH_PAGES_BRANCH ${INPUT_GH_PAGES}
+fi
+
+
 if [[ ${INPUT_SUBFOLDER} != '' ]]; then
     INPUT_ALLURE_HISTORY="${INPUT_ALLURE_HISTORY}/${INPUT_SUBFOLDER}"
     INPUT_GH_PAGES="${INPUT_GH_PAGES}/${INPUT_SUBFOLDER}"
@@ -22,6 +29,8 @@ if [[ ${INPUT_REPORT_URL} != '' ]]; then
     GITHUB_PAGES_WEBSITE_URL="${INPUT_REPORT_URL}"
     echo "Replacing github pages url with user input. NEW url ${GITHUB_PAGES_WEBSITE_URL}"
 fi
+
+
 
 COUNT=$( ( ls ./${INPUT_ALLURE_HISTORY} | wc -l ) )
 echo "count folders in allure-history: ${COUNT}"
