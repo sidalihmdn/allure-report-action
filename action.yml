@@ -63,6 +63,7 @@ runs:
   using: 'composite'
   steps:
     - name: Set Up Environment Variables
+      shell: bash
       env:
         INPUT_ALLURE_RESULTS: '${{ inputs.allure_results }}'
         INPUT_ALLURE_REPORT: '${{ inputs.allure_report }}'
@@ -77,8 +78,6 @@ runs:
         INPUT_GITHUB_TESTS_REPO: '${{ inputs.github_tests_repo }}'
         INPUT_REPORT_URL: '${{ inputs.report_url }}'
         INPUT_GITHUB_SERVER_URL: '${{ inputs.github_server_url }}'
-
-    - name: Run Allure Report Generator Script
       run: |
         chmod +x ./entrypoint.sh
         ./entrypoint.sh
