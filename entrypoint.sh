@@ -9,12 +9,12 @@ REPOSITORY_NAME=${REPOSITORY_OWNER_SLASH_NAME##*/}
 GITHUB_PAGES_WEBSITE_URL="https://${INPUT_GITHUB_REPO_OWNER}.github.io/${REPOSITORY_NAME}"
 #echo "Github pages url $GITHUB_PAGES_WEBSITE_URL"
 
-#clone the gh-pages branch to the allure history folder
+# Clone the gh-pages branch to the allure history folder
 if [[ ${INPUT_GH_PAGES_BRANCH} != '' ]]; then
-  echo "cloning gh-pages branch to ${INPUT_GH_PAGES} ..."
-  REPO_URL = "https://${INPUT_GITHUB_TOKEN}@github.com/${INPUT_GITHUB_REPO}.git"
+  echo "Cloning gh-pages branch to ${INPUT_GH_PAGES} ..."
+  REPO_URL="https://${INPUT_GITHUB_TOKEN}@github.com/${INPUT_GITHUB_REPO}.git"
   echo $REPO_URL
-  git clone $REPO_URL --branch $INPUT_GH_PAGES_BRANCH ${INPUT_GH_PAGES}
+  git clone $REPO_URL --branch ${INPUT_GH_PAGES_BRANCH} ${INPUT_GH_PAGES}
 fi
 
 
