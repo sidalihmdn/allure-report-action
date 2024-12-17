@@ -83,4 +83,4 @@ runs:
         pwd
 
         chmod +x ${{ github.action_path }}/entrypoint.sh
-        .${{ github.action_path }}/entrypoint.sh
+        sh ${{ github.action_path }}/entrypoint.sh
