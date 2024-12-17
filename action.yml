@@ -81,5 +81,5 @@ runs:
       run: |
         ls -la
         pwd
-        chmod +x ./entrypoint.sh
-        ./entrypoint.sh
+        chmod +x $GITHUB_WORKSPACE/entrypoint.sh
+        .$GITHUB_WORKSPACE/entrypoint.sh
