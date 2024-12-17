@@ -79,8 +79,5 @@ runs:
         INPUT_REPORT_URL: '${{ inputs.report_url }}'
         INPUT_GITHUB_SERVER_URL: '${{ inputs.github_server_url }}'
       run: |
-        ls -la
-        pwd
-
         chmod +x ${{ github.action_path }}/entrypoint.sh
         sh ${{ github.action_path }}/entrypoint.sh
