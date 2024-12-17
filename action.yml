@@ -57,23 +57,28 @@ inputs:
     description: 'GitHub server URL'
     required: true
     default: ${{ github.server_url }}
+
+
 runs:
   using: 'composite'
   steps:
-  env:
-    INPUT_ALLURE_RESULTS: ${{ inputs.allure_results }}
-    INPUT_ALLURE_REPORT: ${{ inputs.allure_report }}
-    INPUT_GH_PAGES: ${{ inputs.gh_pages }}
-    INPUT_ALLURE_HISTORY: ${{ inputs.allure_history }}
-    INPUT_SUBFOLDER: ${{ inputs.subfolder }}
-    INPUT_KEEP_REPORTS: ${{ inputs.keep_reports }}
-    INPUT_GITHUB_RUN_NUM: ${{ inputs.github_run_num }}
-    INPUT_GITHUB_RUN_ID: ${{ inputs.github_run_id }}
-    INPUT_GITHUB_REPO: ${{ inputs.github_repo }}
-    INPUT_GITHUB_REPO_OWNER: ${{ inputs.github_repo_owner }}
-    INPUT_GITHUB_TESTS_REPO: ${{ inputs.github_tests_repo }}
-    INPUT_REPORT_URL: ${{ inputs.report_url }}
-    INPUT_GITHUB_SERVER_URL: ${{ inputs.github_server_url }}
-  - run: |
-      chmod +x ./entrypoint.sh
-      ./entrypoint.sh
+    - name: Set Up Environment Variables
+      env:
+        INPUT_ALLURE_RESULTS: '${{ inputs.allure_results }}'
+        INPUT_ALLURE_REPORT: '${{ inputs.allure_report }}'
+        INPUT_GH_PAGES: '${{ inputs.gh_pages }}'
+        INPUT_ALLURE_HISTORY: '${{ inputs.allure_history }}'
+        INPUT_SUBFOLDER: '${{ inputs.subfolder }}'
+        INPUT_KEEP_REPORTS: '${{ inputs.keep_reports }}'
+        INPUT_GITHUB_RUN_NUM: '${{ inputs.github_run_num }}'
+        INPUT_GITHUB_RUN_ID: '${{ inputs.github_run_id }}'
+        INPUT_GITHUB_REPO: '${{ inputs.github_repo }}'
+        INPUT_GITHUB_REPO_OWNER: '${{ inputs.github_repo_owner }}'
+        INPUT_GITHUB_TESTS_REPO: '${{ inputs.github_tests_repo }}'
+        INPUT_REPORT_URL: '${{ inputs.report_url }}'
+        INPUT_GITHUB_SERVER_URL: '${{ inputs.github_server_url }}'
+
+    - name: Run Allure Report Generator Script
+      run: |
+        chmod +x ./entrypoint.sh
+        ./entrypoint.sh
