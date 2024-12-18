@@ -2,21 +2,21 @@
 
 mkdir -p ./${INPUT_GH_PAGES}
 mkdir -p ./${INPUT_ALLURE_HISTORY}
-cp -r ./${INPUT_GH_PAGES}/. ./${INPUT_ALLURE_HISTORY}
-
-REPOSITORY_OWNER_SLASH_NAME=${INPUT_GITHUB_REPO}
-REPOSITORY_NAME=${REPOSITORY_OWNER_SLASH_NAME##*/}
-GITHUB_PAGES_WEBSITE_URL="https://${INPUT_GITHUB_REPO_OWNER}.github.io/${REPOSITORY_NAME}"
-#echo "Github pages url $GITHUB_PAGES_WEBSITE_URL"
 
 # Clone the gh-pages branch to the allure history folder
 if [[ ${INPUT_GH_PAGES_BRANCH} != '' ]]; then
   echo "Cloning gh-pages branch to ${INPUT_GH_PAGES} ..."
   REPO_URL="https://x-access-token:${GIT_TOKEN}@github.com/${INPUT_GITHUB_REPO}.git"
   echo "$REPO_URL"
-  git clone "$REPO_URL" --branch "${INPUT_GH_PAGES_BRANCH}" "${INPUT_ALLURE_HISTORY}"
+  git clone "$REPO_URL" --branch "${INPUT_GH_PAGES_BRANCH}" "${INPUT_GH_PAGES}"
 fi
 
+cp -r ./${INPUT_GH_PAGES}/. ./${INPUT_ALLURE_HISTORY}
+
+REPOSITORY_OWNER_SLASH_NAME=${INPUT_GITHUB_REPO}
+REPOSITORY_NAME=${REPOSITORY_OWNER_SLASH_NAME##*/}
+GITHUB_PAGES_WEBSITE_URL="https://${INPUT_GITHUB_REPO_OWNER}.github.io/${REPOSITORY_NAME}"
+#echo "Github pages url $GITHUB_PAGES_WEBSITE_URL"
 
 if [[ ${INPUT_SUBFOLDER} != '' ]]; then
     INPUT_ALLURE_HISTORY="${INPUT_ALLURE_HISTORY}/${INPUT_SUBFOLDER}"
