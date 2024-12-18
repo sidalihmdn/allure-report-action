@@ -14,7 +14,7 @@ if [[ ${INPUT_GH_PAGES_BRANCH} != '' ]]; then
   echo "Cloning gh-pages branch to ${INPUT_GH_PAGES} ..."
   REPO_URL="https://x-access-token:${GIT_TOKEN}@github.com/${INPUT_GITHUB_REPO}.git"
   echo "$REPO_URL"
-  git clone "$REPO_URL" --branch "${INPUT_GH_PAGES_BRANCH}" "${INPUT_GH_PAGES}"
+  git clone "$REPO_URL" --branch "${INPUT_GH_PAGES_BRANCH}" "${INPUT_ALLURE_HISTORY}"
 fi
 
 
