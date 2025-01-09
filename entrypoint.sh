@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-INPUT_KEEP_REPORTS=12
+export INPUT_KEEP_REPORTS=12
 mkdir -p ./${INPUT_GH_PAGES}
 mkdir -p ./${INPUT_ALLURE_HISTORY}
 
